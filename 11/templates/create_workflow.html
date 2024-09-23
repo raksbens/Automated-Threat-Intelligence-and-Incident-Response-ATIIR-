@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Workflow</title>
+</head>
+<body>
+    <h1>Create a New Workflow with Fetched IOCs</h1>
+
+    <form method="POST" action="{{ url_for('create_new_workflow') }}">
+        <label for="workflow_name">Workflow Name:</label>
+        <input type="text" id="workflow_name" name="workflow_name" required><br><br>
+
+        <label for="description">Workflow Description:</label>
+        <input type="text" id="description" name="description" required><br><br>
+
+        <button type="submit">Create Workflow</button>
+    </form>
+
+    <br><br>
+    <a href="{{ url_for('download_csv') }}">Back to Actions</a>
+</body>
+</html>

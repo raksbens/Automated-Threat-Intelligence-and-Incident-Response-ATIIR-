@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Event IOCs</title>
+</head>
+<body>
+    <h1>Fetch IOCs from MISP Event</h1>
+    <form method="POST" action="{{ url_for('fetch_event_iocs_route') }}">
+        <label for="event_id">Enter Event ID:</label>
+        <input type="text" name="event_id" id="event_id" required>
+        <button type="submit">Fetch IOCs</button>
+    </form>
+</body>
+</html>

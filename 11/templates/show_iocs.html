@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOCs for Event {{ event_id }}</title>
+</head>
+<body>
+    <h1>IOCs for Event {{ event_id }}</h1>
+    <ul>
+        {% for key, values in iocs.items() %}
+            <li><strong>{{ key }}</strong>:
+                <ul>
+                    {% for value in values %}
+                        <li>{{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Button to download the CSV file -->
+    <a href="{{ url_for('download_csv') }}">Download CSV of IOCs</a>
+    <br><br>
+    <a href="{{ url_for('fetch_event_iocs_route') }}">Back</a>
+</body>
+</html>

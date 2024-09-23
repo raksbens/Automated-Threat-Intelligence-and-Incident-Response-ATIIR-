@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Existing Shuffle Workflows</title>
+</head>
+<body>
+    <h1>Existing Shuffle Workflows</h1>
+
+    {% if workflows %}
+        <ul>
+            {% for workflow in workflows %}
+            <li>
+                <strong>{{ workflow['name'] }}</strong> - {{ workflow['description'] }}
+                <br>
+                <form action="{{ url_for('trigger_workflow', workflow_id=workflow['id']) }}" method="POST">
+                    <button type="submit">Trigger Workflow</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No workflows found.</p>
+    {% endif %}
+
+    <br><br>
+    <a href="{{ url_for('download_csv') }}">Back to Actions</a>
+</body>
+</html>

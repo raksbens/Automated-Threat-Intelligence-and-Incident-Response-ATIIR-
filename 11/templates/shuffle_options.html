@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuffle Actions</title>
+</head>
+<body>
+    <h1>Shuffle Actions</h1>
+
+    <p>Select an action to perform with Shuffle:</p>
+
+    <ul>
+        <li><a href="{{ url_for('fetch_existing_workflows') }}">Fetch Existing Workflows</a></li>
+        <li><a href="{{ url_for('create_new_workflow') }}">Create a New Workflow with Fetched IOCs</a></li>
+    </ul>
+
+    <br><br>
+    <a href="{{ url_for('download_csv') }}">Back to CSV Download</a>
+</body>
+</html>

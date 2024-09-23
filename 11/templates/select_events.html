@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Events</title>
+    <script>
+        // Function to toggle check/uncheck all checkboxes in a section
+        function toggleSelectAll(section, isChecked) {
+            var checkboxes = document.querySelectorAll(`.${section} input[type="checkbox"]`);
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = isChecked;
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Select Events for IOC Fetching</h1>
+    <form method="POST" action="{{ url_for('fetch_iocs') }}">
+        <h2>Phishing Events</h2>
+        <button type="button" onclick="toggleSelectAll('phishing', true)">Select All</button>
+        <button type="button" onclick="toggleSelectAll('phishing', false)">Deselect All</button>
+        <ul class="phishing">
+            {% for event in phishing_events %}
+            <li>
+                <input type="checkbox" name="selected_events" value="{{ event.id }}"> {{ event.info }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Ransomware Events</h2>
+        <button type="button" onclick="toggleSelectAll('ransomware', true)">Select All</button>
+        <button type="button" onclick="toggleSelectAll('ransomware', false)">Deselect All</button>
+        <ul class="ransomware">
+            {% for event in ransomware_events %}
+            <li>
+                <input type="checkbox" name="selected_events" value="{{ event.id }}"> {{ event.info }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Events in Both Categories</h2>
+        <button type="button" onclick="toggleSelectAll('both', true)">Select All</button>
+        <button type="button" onclick="toggleSelectAll('both', false)">Deselect All</button>
+        <ul class="both">
+            {% for event in both_events %}
+            <li>
+                <input type="checkbox" name="selected_events" value="{{ event.id }}"> {{ event.info }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        <button type="submit">Fetch IOCs and Tag Selected Events</button>
+    </form>
+</body>
+</html>
